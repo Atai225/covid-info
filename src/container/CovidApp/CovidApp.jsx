@@ -21,13 +21,10 @@ function CovidApp({ countries }) {
 	};
 
 	useEffect(() => {
-	const country = JSON.parse(localStorage.getItem("country"));
+		const country = JSON.parse(localStorage.getItem("country"));
 		if (country) {
 		setChoosedCountry(country);
 		}
-	}, [choosedCountry]);
-
-	useEffect(() => {
 		if (choosedCountry) {
 			dispatch(getCountryData(choosedCountry)).then(() => {
 				dispatch(getMostRecovered())
@@ -44,7 +41,7 @@ function CovidApp({ countries }) {
 					choosedCountry={choosedCountry}
 				/>
 			</div>
-			<div className="country-data" style={{padding: "2rem 0"}}>
+			<div className="country-data" >
 				{countryData && countryData.length > 0 && <CountryData countryData={countryData} mostRecoveredItem={mostRecovered}/>}
 			</div>
 		</div>
